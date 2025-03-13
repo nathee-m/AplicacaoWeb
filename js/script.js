@@ -1,49 +1,68 @@
 
-function redirectToLogin(event) {
-    event.preventDefault();
-    window.location.href = 'login.html';  
-}
+window.onload = function() {
 
-function redirectToIndex(event) {
-    event.preventDefault();  
-    window.location.href = 'index.html';  
-}
+    const userIcon = document.querySelector('.icons img[src="icons/user-icon.png"]');
+    const dropdownMenu = document.getElementById('dropdownMenu');
 
-function redirectToCadastro(event) {
-    event.preventDefault();  
-    window.location.href = 'cadastro.html';  
-}
+    function toggleDropdownMenu() {
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    }
 
-function redirectToNovidades(event) {
-    event.preventDefault();  
-    window.location.href = 'novidades.html';  
-}
+    if (userIcon) {
+        userIcon.addEventListener('click', toggleDropdownMenu);
+    }
 
-function redirectToCesta(event) {
-    event.preventDefault();  
-    window.location.href = 'cesta.html';  
-}
+    window.addEventListener('click', (event) => {
+        if (!userIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+        }
+    });
 
+    const closeIcon = document.querySelector('.close-icon');
+    if (closeIcon) {
+        closeIcon.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.href = 'index.html'; 
+        });
+    }
 
-document.querySelectorAll('.icon img[src="icons/user-icon.png"]').forEach(icon => {
-    icon.addEventListener('click', redirectToLogin);
-});
+    const noAccountLink = document.querySelector('.no-account-link');
+    if (noAccountLink) {
+        noAccountLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.href = 'cadastro.html'; 
+        });
+    }
 
-document.querySelectorAll('.close-icon').forEach(icon => {
-    icon.addEventListener('click', redirectToIndex);
-});
+ 
+    function redirectToCesta(event) {
+        event.preventDefault();
+        window.location.href = 'cesta.html';
+    }
+    document.querySelectorAll('.icons img[src="icons/cart-icon.png"]').forEach(icon => {
+        icon.addEventListener('click', redirectToCesta);
+    });
 
-document.querySelectorAll('.no-account-link').forEach(icon => {
-    icon.addEventListener('click', redirectToCadastro);
-});
+    function redirectToNovidades(event) {
+        event.preventDefault();
+        window.location.href = 'novidades.html';
+    }
+    document.querySelectorAll('.novidades').forEach(icon => {
+        icon.addEventListener('click', redirectToNovidades);
+    });
 
-document.querySelectorAll('.novidades').forEach(icon => {
-    icon.addEventListener('click', redirectToNovidades);
-});
+    document.getElementById("loginUsuario")?.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'login.html';  
+    });
 
-document.querySelectorAll('.icon img[src="icons/cart-icon.png"]').forEach(icon => {
-    icon.addEventListener('click', redirectToCesta);
-});
+    document.getElementById("loginEmpresa")?.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'enter-dash.html'; 
+    });
+
+};
+
 
 const products = [
     { id: 1, name: "Camiseta Básica", color: "Branca", size: "P", price: "159,90", image: "images/prod01.jpg" },
