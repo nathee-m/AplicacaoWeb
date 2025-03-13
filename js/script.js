@@ -58,7 +58,7 @@ window.onload = function() {
 
     document.getElementById("loginEmpresa")?.addEventListener('click', function(event) {
         event.preventDefault();
-        window.location.href = 'enter-dash.html'; 
+        window.location.href = 'index-dash.html'; 
     });
 
 };
