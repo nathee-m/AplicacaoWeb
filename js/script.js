@@ -30,14 +30,14 @@ window.onload = function() {
     if (noAccountLink) {
         noAccountLink.addEventListener('click', function(event) {
             event.preventDefault();
-            window.location.href = 'cadastro.html'; 
+            window.location.href = 'loja-cadastro.html'; 
         });
     }
 
  
     function redirectToCesta(event) {
         event.preventDefault();
-        window.location.href = 'cesta.html';
+        window.location.href = 'loja-cesta.html';
     }
     document.querySelectorAll('.icons img[src="icons/cart-icon.png"]').forEach(icon => {
         icon.addEventListener('click', redirectToCesta);
@@ -45,7 +45,7 @@ window.onload = function() {
 
     function redirectToNovidades(event) {
         event.preventDefault();
-        window.location.href = 'novidades.html';
+        window.location.href = 'loja-novidades.html';
     }
     document.querySelectorAll('.novidades').forEach(icon => {
         icon.addEventListener('click', redirectToNovidades);
@@ -53,12 +53,12 @@ window.onload = function() {
 
     document.getElementById("loginUsuario")?.addEventListener('click', function(event) {
         event.preventDefault();
-        window.location.href = 'login.html';  
+        window.location.href = 'loja-login.html';  
     });
 
     document.getElementById("loginEmpresa")?.addEventListener('click', function(event) {
         event.preventDefault();
-        window.location.href = 'index-dash.html'; 
+        window.location.href = 'dash-index.html'; 
     });
 
 };
