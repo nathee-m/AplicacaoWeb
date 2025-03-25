@@ -77,10 +77,10 @@
 
         <div class="content-dash">
             <h2>Novo Fornecedor</h2>
-            <form id="form-novo-produto">
+            <form id="form-novo-fornecedor" action="utils/processa-dash-fornecedor.php" method="POST">
                 <div class="form-dash">
-                    <label for="produto-nome">Nome do Fornecedor</label>
-                    <input type="text" id="produto-nome" name="produto-nome">
+                    <label for="fornecedor-nome">Nome do Fornecedor</label>
+                    <input type="text" id="fornecedor-nome" name="nome">
                 </div>
         
                 <div class="form-dash">
@@ -96,7 +96,7 @@
         
                 <div class="form-dash-buttons">
                     <button type="submit" class="add-form-btn">Adicionar Fornecedor</button>
-                    <button type="button" class="cancel-form-btn" onclick="cancelarAddFornecedor()">Cancelar</button>
+                    <button type="button" class="cancel-form-btn" onclick="cancelAddFornecedor()">Cancelar</button>
                 </div>
             </form>
         </div>
