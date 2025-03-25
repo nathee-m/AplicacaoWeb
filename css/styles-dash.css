@@ -158,6 +158,125 @@ main {
     color: #39393a;
 }
 
+/* Cadastro e Login */
+
+.container-cadastro, 
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    background-color: #39393A; /
+}
+
+.form-box {
+    background-color: #87D4D4; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 700px;
+    position: relative;
+}
+
+.form-box h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #000100;
+    text-transform: uppercase;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+form#form-dash {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center; 
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 320px; 
+}
+
+.label-cadastro, 
+.label-login {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px; 
+    color: #000100;
+    width: 100%; 
+    text-align: left;
+}
+
+.input-field {
+    width: 100%; 
+    height: 36px;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    border: 1px solid #afb4c0;
+    font-size: 14px;
+    text-align: left; 
+}
+
+input::placeholder {
+color: #afb4c07a;
+}
+
+.submit-btn,
+.add-to-cart-btn {
+    width: 320px;
+    height: 36px;
+    background-color: #e9d758;
+    color: #000100;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 auto; 
+    margin-top: 35px;
+} 
+
+.submit-btn:hover {
+    background-color: #959595;
+} 
+
+.close-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.privacy-policy, 
+.password-forgotten,
+.no-account {
+    font-size: 12px;
+    text-align: center;
+    color: #000100;
+}
+
+.privacy-policy-link, 
+.password-forgotten-link,
+.no-account-link {
+    color: #2687D7; 
+    text-decoration: none; 
+}
+
+.password-forgotten {
+    text-align: left;
+    width: 100%;
+}
+
+.password-forgotten-link {
+    text-decoration: none;
+    text-align: left;
+}
 
 
 /* Dashboard banner-icons */
@@ -297,6 +416,28 @@ form {
 .form-dash {
     display: flex;
     flex-direction: column;
+}
+
+.form-dash select {
+    height: 40px; 
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #afb4c073; 
+    border-radius: 10px; 
+    width: 100%; 
+    background-color: #ffffff; 
+    box-sizing: border-box; 
+}
+
+.form-dash select:focus {
+    border-color: #000100; 
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+.form-dash select:focus,
+.form-dash select {
+    background-color: #ffffff; 
 }
 
 .form-dash label {

@@ -30,14 +30,14 @@ window.onload = function() {
     if (noAccountLink) {
         noAccountLink.addEventListener('click', function(event) {
             event.preventDefault();
-            window.location.href = 'cadastro.html'; 
+            window.location.href = 'loja-cadastro.html'; 
         });
     }
 
  
     function redirectToCesta(event) {
         event.preventDefault();
-        window.location.href = 'cesta.html';
+        window.location.href = 'loja-cesta.html';
     }
     document.querySelectorAll('.icons img[src="icons/cart-icon.png"]').forEach(icon => {
         icon.addEventListener('click', redirectToCesta);
@@ -45,7 +45,7 @@ window.onload = function() {
 
     function redirectToNovidades(event) {
         event.preventDefault();
-        window.location.href = 'novidades.html';
+        window.location.href = 'loja-novidades.html';
     }
     document.querySelectorAll('.novidades').forEach(icon => {
         icon.addEventListener('click', redirectToNovidades);
@@ -53,12 +53,12 @@ window.onload = function() {
 
     document.getElementById("loginUsuario")?.addEventListener('click', function(event) {
         event.preventDefault();
-        window.location.href = 'login.html';  
+        window.location.href = 'loja-login.html';  
     });
 
-    document.getElementById("loginEmpresa")?.addEventListener('click', function(event) {
+    document.getElementById("loginLojista")?.addEventListener('click', function(event) {
         event.preventDefault();
-        window.location.href = 'index-dash.html'; 
+        window.location.href = 'dash-login.html'; 
     });
 
 };
@@ -239,12 +239,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
 
-//dashboard
+//validar senha
+document.querySelector("form").addEventListener("submit", function(event) {
+    const senha = document.getElementById("password").value;
+    const confirmaSenha = document.getElementById("confirm-password").value;
 
-document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', () => {
-        item.classList.toggle('active');
-    });
+    if (senha !== confirmaSenha) {
+        alert("As senhas não coincidem. Insira a mesma senha nos dois campos e tente novamente.");
+        event.preventDefault(); 
+    }
 });
 
 

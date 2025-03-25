@@ -1,10 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['lojista_logged_in']) || $_SESSION['lojista_logged_in'] !== true) {
+    header('Location: dash-login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto</title>
-    <link rel="stylesheet" href="css/styles-dash.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/styles-dash.css">
 </head>
 <body>
 
@@ -14,18 +23,17 @@
         </div>
 
         <nav class="navbar-dash">
-            <a href="dashboard.html" class="dashboard">Dashboard</a>
+            <a href="dashboard.php" class="dashboard">Dashboard</a>
         </nav>
 
         <div class="icons-dash">
-            <a class="icon-dash"><img src="icons/search-icon.png"></a>
-            <a class="icon-dash"><img src="icons/user-icon-dash.png"></a>
-            <a class="icon-dash"><img src="icons/logout-icon.png"></a>
+            <a class="icon-dash"><img src="../icons/search-icon.png"></a>
+            <a href="dash-login.php" class="icon-dash"><img src="../icons/user-icon-dash.png"></a>
+            <a href="dash-logout.php" class="icon-dash"><img src="../icons/logout-icon.png"></a>
         </div>
     </header>
 
     <main>
-
         <div class="dashboard-container">
             <div class="menu-lateral">
                 <ul class="menu-lateral-itens">
@@ -39,7 +47,7 @@
                         Produtos
                         <ul class="submenu">
                             <li><a href="#">Listar Produtos</a></li>
-                            <li><a href="adicionar_produto.html">Adicionar Produto</a></li>
+                            <li><a href="../dash-add-produto.php">Adicionar Produto</a></li>
                             <li><a href="#">Atualizar Produto</a></li>
                             <li><a href="#">Remover Produto</a></li>
                         </ul>
@@ -48,7 +56,7 @@
                         Fornecedores
                         <ul class="submenu">
                             <li><a href="#">Listar Fornecedores</a></li>
-                            <li><a href="adicionar_fornecedor.html">Adicionar Fornecedor</a></li>
+                            <li><a href="../dash-add-fornecedor.html">Adicionar Fornecedor</a></li>
                             <li><a href="#">Atualizar Fornecedor</a></li>
                             <li><a href="#">Remover Fornecedor</a></li>
                         </ul>
@@ -74,58 +82,14 @@
                     </li>
                 </ul>
             </div>
-
-
-        <div class="content-dash">
-            <h2>Novo Produto</h2>
-            <form id="form-novo-produto">
-                <div class="form-dash">
-                    <label for="produto-nome">Nome do Produto</label>
-                    <input type="text" id="produto-nome" name="produto-nome">
-                </div>
-        
-                <div class="form-dash">
-                    <label for="fornecedor">Fornecedor</label>
-                    <input type="text" id="fornecedor" name="fornecedor">
-                </div>
-        
-                <div class="form-dash">
-                    <label for="quantidade">Quantidade</label>
-                    <input type="number" id="quantidade" name="quantidade">
-                </div>
-        
-                <div class="form-dash">
-                    <label for="cor">Cor</label>
-                    <input type="text" id="cor" name="cor">
-                </div>
-        
-                <div class="form-dash">
-                    <label for="tamanho">Tamanho</label>
-                    <input type="text" id="tamanho" name="tamanho">
-                </div>
-        
-                <div class="form-dash">
-                    <label for="preco">Preço</label>
-                    <input type="text" id="preco" name="preco">
-                </div>
-        
-                <div class="form-dash">
-                    <label for="descricao">Descrição (Opcional)</label>
-                    <textarea id="descricao" name="descricao"></textarea>
-                </div>
-        
-                <div class="form-dash-buttons">
-                    <button type="submit" class="add-form-btn">Adicionar Produto</button>
-                    <button type="button" class="cancel-form-btn" onclick="cancelarAddProduto()">Cancelar</button>
-                </div>
-            </form>
+    
+            <div class="content-dash">
+                <p>Seja bem-vindo!</p> 
+            </div>
         </div>
-        
     </main>
     
-    
-    <script src="js/script-dash.js"></script>
+    <script src="../js/script-dash.js"></script>
 </body>
 </html>
-
 
