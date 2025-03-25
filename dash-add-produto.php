@@ -1,3 +1,11 @@
+<?php
+include_once 'utils/processa-dash-produto.php'; 
+
+$pdo = new usePDO(); 
+$fornecedores = $pdo->listarFornecedores(); 
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,7 +47,7 @@
                         Produtos
                         <ul class="submenu">
                             <li><a href="#">Listar Produtos</a></li>
-                            <li><a href="dash-add-produto.html">Adicionar Produto</a></li>
+                            <li><a href="dash-add-produto.php">Adicionar Produto</a></li>
                             <li><a href="#">Atualizar Produto</a></li>
                             <li><a href="#">Remover Produto</a></li>
                         </ul>
@@ -78,7 +86,7 @@
 
         <div class="content-dash">
             <h2>Novo Produto</h2>
-            <form id="form-novo-produto">
+            <form id="form-novo-produto" action="utils/processa-dash-produto.php" method="POST">
                 <div class="form-dash">
                     <label for="produto-nome">Nome do Produto</label>
                     <input type="text" id="produto-nome" name="produto-nome">
@@ -86,7 +94,19 @@
         
                 <div class="form-dash">
                     <label for="fornecedor">Fornecedor</label>
-                    <input type="text" id="fornecedor" name="fornecedor">
+                    <select id="fornecedor_id" name="fornecedor_id">
+                        <option value="" disabled selected>Selecione o fornecedor...</option>
+                        <?php
+                        $fornecedores = $pdo->listarFornecedores();
+                        if (!empty($fornecedores)) {
+                            foreach ($fornecedores as $fornecedor) {
+                                echo "<option value='{$fornecedor['id']}'>{$fornecedor['nome']}</option>"; 
+                            }
+                        } else {
+                            echo "<option disabled>Não há fornecedores cadastrados</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
         
                 <div class="form-dash">
@@ -106,7 +126,7 @@
         
                 <div class="form-dash">
                     <label for="preco">Preço</label>
-                    <input type="text" id="preco" name="preco">
+                    <input type="number" id="preco" name="preco" step="0.01" min="0">
                 </div>
         
                 <div class="form-dash">
@@ -116,7 +136,7 @@
         
                 <div class="form-dash-buttons">
                     <button type="submit" class="add-form-btn">Adicionar Produto</button>
-                    <button type="button" class="cancel-form-btn" onclick="cancelarAddProduto()">Cancelar</button>
+                    <button type="button" class="cancel-form-btn" onclick="cancelAddProduto()">Cancelar</button>
                 </div>
             </form>
         </div>
