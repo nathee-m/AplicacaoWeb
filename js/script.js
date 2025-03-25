@@ -56,9 +56,9 @@ window.onload = function() {
         window.location.href = 'loja-login.html';  
     });
 
-    document.getElementById("loginEmpresa")?.addEventListener('click', function(event) {
+    document.getElementById("loginLojista")?.addEventListener('click', function(event) {
         event.preventDefault();
-        window.location.href = 'dash-index.html'; 
+        window.location.href = 'dash-login.html'; 
     });
 
 };
@@ -239,12 +239,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
 
-//dashboard
+//validar senha
+document.querySelector("form").addEventListener("submit", function(event) {
+    const senha = document.getElementById("password").value;
+    const confirmaSenha = document.getElementById("confirm-password").value;
 
-document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', () => {
-        item.classList.toggle('active');
-    });
+    if (senha !== confirmaSenha) {
+        alert("As senhas não coincidem. Insira a mesma senha nos dois campos e tente novamente.");
+        event.preventDefault(); 
+    }
 });
 
 
