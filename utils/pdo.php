@@ -23,10 +23,11 @@ class usePDO {
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
                 nome VARCHAR(100) NOT NULL,
                 email VARCHAR(100) NOT NULL UNIQUE,
-                senha VARCHAR(100) NOT NULL
+                senha VARCHAR(100) NOT NULL,
+                 salt VARCHAR(100) NOT NULL
             )";
             $cnx->exec($sql);
-            echo "Tabela 'cliente' já existente.";
+            echo "Tabela 'cliente' já existe.";
         } catch (PDOException $e) {
             echo "Erro ao criar a tabela: " . $e->getMessage();
         }
@@ -36,14 +37,16 @@ class usePDO {
         try {
             $cnx = $this->connection();
     
-            $senhaHash = password_hash($senha, PASSWORD_BCRYPT);
+            $salt = bin2hex(random_bytes(32));  
+            $senhaHash = hash('sha256', $salt . $senha);
     
-            $sql = "INSERT INTO cliente (nome, email, senha) VALUES (:nome, :email, :senha)";
+            $sql = "INSERT INTO cliente (nome, email, senha, salt) VALUES (:nome, :email, :senha, :salt)";
             $stmt = $cnx->prepare($sql);
     
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':senha', $senhaHash);
+            $stmt->bindParam(':salt', $salt);
     
             $stmt->execute();
     
@@ -66,8 +69,11 @@ class usePDO {
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
     
             if ($usuario) {
-                if (password_verify($senha, $usuario['senha'])) {
-                    return true; 
+                $salt = $usuario['salt'];
+                $senhaHash = hash('sha256', $salt . $senha);
+
+                if ($senhaHash === $usuario['senha']) {
+                    return true;  
                 } else {
                     return false; 
                 }
