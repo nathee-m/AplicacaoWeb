@@ -28,7 +28,7 @@ if (!isset($_SESSION['lojista_logged_in']) || $_SESSION['lojista_logged_in'] !==
 
         <div class="icons-dash">
             <a class="icon-dash"><img src="../icons/search-icon.png"></a>
-            <a href="dash-login.php" class="icon-dash"><img src="../icons/user-icon-dash.png"></a>
+            <a href="dashboard.php" class="icon-dash"><img src="../icons/user-icon-dash.png"></a>
             <a href="dash-logout.php" class="icon-dash"><img src="../icons/logout-icon.png"></a>
         </div>
     </header>

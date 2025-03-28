@@ -27,7 +27,7 @@ $fornecedores = $pdo->listarFornecedores();
 
         <div class="icons-dash">
             <a class="icon-dash"><img src="icons/search-icon.png"></a>
-            <a class="icon-dash" href="utils/dash-login.php"><img src="icons/user-icon-dash.png"></a>
+            <a class="icon-dash" href="utils/dashboard.php"><img src="icons/user-icon-dash.png"></a>
             <a class="icon-dash" href="utils/dash-logout.php"><img src="icons/logout-icon.png"></a>
         </div>
     </header>
