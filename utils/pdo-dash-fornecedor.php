@@ -26,7 +26,7 @@ class usePDO {
                 telefone VARCHAR(20) NOT NULL
             )";
             $cnx->exec($sql);
-            echo "Tabela 'fornecedor' criada com sucesso.";
+            echo "Tabela 'fornecedor' já existe.";
         } catch (PDOException $e) {
             echo "Erro ao criar a tabela: " . $e->getMessage();
         }
@@ -44,7 +44,7 @@ class usePDO {
             $stmt->bindParam(':telefone', $telefone);
     
             $stmt->execute();
-            echo "Fornecedor cadastrado com sucesso!";
+   
             return true;
         } catch (PDOException $e) {
             echo "Erro ao cadastrar: " . $e->getMessage();

@@ -24,7 +24,7 @@ class usePDO {
             $stmt = $cnx->prepare($sqlFornecedor);
             $stmt->execute();
             if (!$stmt->fetch()) {
-                echo "A tabela 'fornecedor' não encontrada. Por favor, crie a tabela 'fornecedor'.";
+                echo "A tabela 'fornecedor' não existe. Por favor, crie a tabela 'fornecedor'.";
                 return;
             }
 
@@ -40,7 +40,7 @@ class usePDO {
                 FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id) ON DELETE CASCADE
             )";
             $cnx->exec($sql);
-            echo "Tabela 'produto' criada com sucesso.";
+            echo "Tabela 'produto' já existe.";
         } catch (PDOException $e) {
             echo "Erro ao criar a tabela: " . $e->getMessage();
         }
