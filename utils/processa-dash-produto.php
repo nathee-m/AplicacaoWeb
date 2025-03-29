@@ -20,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "O preço deve ser um número válido.";
     } else {
         if ($pdo->cadastrarProduto($nome, $fornecedor_id, $quantidade, $cor, $tamanho, $preco_unitario, $descricao)) {
-            header("Location: dashboard.php"); 
+            echo "Produto cadastrado com sucesso. Redirecionando para Dashboard...";
+            echo "<script src='../js/script-dash.js'></script>";
+            echo "<script>redirectToPage('dashboard.php', 2000);</script>";
         } else {
             echo "Erro ao cadastrar produto.";
         }

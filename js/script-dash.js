@@ -41,6 +41,12 @@ window.onload = function() {
     }
 }
 
+function redirectToPage(url, delay) { 
+    setTimeout(function() {
+        window.location.href = url;
+    }, delay);
+}
+
 function cancelAddFornecedor() {
     document.getElementById('fornecedor-nome').value = '';
     document.getElementById('cnpj').value = '';

@@ -34,7 +34,6 @@ window.onload = function() {
         });
     }
 
- 
     function redirectToCesta(event) {
         event.preventDefault();
         window.location.href = 'loja-cesta.html';

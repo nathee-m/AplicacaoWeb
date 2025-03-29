@@ -10,8 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cnpj = trim($_POST['cnpj']);
     $telefone = trim($_POST['telefone']);
 
-    var_dump($nome, $cnpj, $telefone);
-
     if (empty($nome) || empty($cnpj) || empty($telefone)) {
         echo "Todos os campos são obrigatórios!";
     } else {
@@ -24,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
         
             if ($pdo->cadastrarFornecedor($nome, $cnpj, $telefone)) {
-                header("Location: dashboard.php"); 
+                echo "Fornecedor cadastrado com sucesso. Redirecionando para Dashboard...";
+                echo "<script src='../js/script-dash.js'></script>";
+                echo "<script>redirectToPage('dashboard.php', 2000);</script>";
                 exit;
             } else {
                 echo "Erro ao cadastrar fornecedor.";
